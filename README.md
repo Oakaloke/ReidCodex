@@ -1,11 +1,13 @@
 # ReidCodex
 
 A static-first content/article site with a small backend. The public side is a
-multi-page site (Home / About / Contact) with a category sidebar that filters
-posts. The admin side is a password-protected dashboard for creating, editing,
-and deleting posts that then appear on the public side.
+multi-page site (Home / About / Contact) with a full-bleed hero, a searchable
+category sidebar, and posts shown as a responsive card grid. The admin side is
+a password-protected dashboard for creating, editing, and deleting posts that
+then appear on the public side.
 
-- **Front end:** plain HTML + CSS + a little vanilla JavaScript (dark theme).
+- **Front end:** plain HTML + CSS + a little vanilla JavaScript. Warm, premium
+  editorial theme — Playfair Display serif headings with Inter body type.
 - **Back end:** Node.js + [Express](https://expressjs.com/).
 - **Storage:** a single JSON file (`data/posts.json`) — easy to read and back up.
 - **Auth:** one admin account from environment variables, with a signed
@@ -122,3 +124,11 @@ Open <http://localhost:3000>.
   `Secure` flag when `NODE_ENV=production`.
 - To move to SQLite later, swap the implementation in `lib/storage.js`; the
   rest of the app talks to it through that module's functions.
+
+## Deployment
+
+The repo's `CNAME` points **reidcodex.com** at GitHub Pages. Note that Pages is
+a **static** host and does not run the Node/Express server, so the `/api/*`
+routes (and the admin dashboard) only work when the Express server is running
+(locally, or on a Node host such as Render/Railway/Fly). See the notes from the
+team before changing the deploy target.
