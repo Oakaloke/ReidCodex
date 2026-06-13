@@ -90,13 +90,10 @@ img { max-width: 100%; display: block; }
   color: var(--ink);
 }
 .brand-logo {
-  height: 38px;
-  width: 38px;
-  background: #fff;
-  border-radius: 9px;
-  padding: 4px;
-  border: 1px solid var(--line-strong);
-  box-shadow: var(--shadow-sm);
+  /* No badge: the dark navy mark shows directly on the light navbar. */
+  height: 34px;
+  width: 34px;
+  display: block;
 }
 .brand-text {
   font-family: var(--serif);
@@ -177,13 +174,12 @@ img { max-width: 100%; display: block; }
   margin: 0 auto;
 }
 .hero-logo {
-  height: 76px;
-  width: 76px;
-  margin: 0 auto 1.5rem;
-  background: #fff;
-  border-radius: 16px;
-  padding: 9px;
-  box-shadow: var(--shadow-lg);
+  /* No badge: render the navy mark as white on the dark hero via a filter.
+     SVG, so it stays crisp at any size. */
+  height: 140px;
+  width: 140px;
+  margin: 0 auto 1.75rem;
+  filter: brightness(0) invert(1);
 }
 .hero-eyebrow {
   margin: 0 0 1rem;
@@ -546,6 +542,7 @@ textarea { min-height: 180px; resize: vertical; line-height: 1.6; }
   .nav-toggle { display: inline-block; }
   .admin-grid { grid-template-columns: 1fr; }
   .hero { padding: 3.5rem 1.25rem 4rem; }
+  .hero-logo { height: 104px; width: 104px; }
 }
 
 @media (max-width: 520px) {
