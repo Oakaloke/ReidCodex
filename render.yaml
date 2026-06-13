@@ -1,0 +1,37 @@
+# Render Blueprint for ReidCodex (https://render.com/docs/blueprint-spec)
+# Runs the full Node/Express app with a persistent disk so posts survive
+# restarts and redeploys.
+#
+# Secrets are NOT stored here. Set ADMIN_USER, ADMIN_PASS, SESSION_SECRET, and
+# NODE_ENV in the Render dashboard (they are marked `sync: false` below, which
+# tells Render to prompt for them instead of reading them from this file).
+
+services:
+  - type: web
+    name: reidcodex
+    runtime: node
+    plan: starter            # persistent disks require a paid instance (not Free)
+    region: oregon           # change if you prefer a different region
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      # --- Non-secret config (safe to keep in the repo) ---
+      - key: DATA_DIR
+        value: /var/data     # must match the disk mountPath below
+      # --- Secrets / per-environment values: set these in the dashboard ---
+      - key: NODE_ENV
+        sync: false          # set to: production
+      - key: ADMIN_USER
+        sync: false
+      - key: ADMIN_PASS
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+    # Persistent disk: posts.json lives here so data is kept across restarts.
+    disk:
+      name: reidcodex-data
+      mountPath: /var/data
+      sizeGB: 1
