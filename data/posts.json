@@ -3,7 +3,8 @@
     "News",
     "Guides",
     "Updates",
-    "Resources"
+    "Resources",
+    "Hebrew Alphabet"
   ],
   "posts": [
     {
@@ -37,6 +38,204 @@
       "body": "A spot to collect links and references you want to keep around. Replace this with your own.",
       "createdAt": "2026-06-12T09:15:00.000Z",
       "updatedAt": "2026-06-12T09:15:00.000Z"
+    },
+    {
+      "id": "heb-01-alef",
+      "title": "Alef — א",
+      "category": "Hebrew Alphabet",
+      "glyph": "א",
+      "body": "Alef (א) is the 1st letter of the Hebrew alphabet. Transliteration: Alef. Sound: silent — a glottal stop that carries its vowel. Numeric value (gematria): 1. Pictograph: an ox or bull's head: strength, leadership, primacy, and the oneness of God.",
+      "createdAt": "2026-06-13T12:21:00.000Z",
+      "updatedAt": "2026-06-13T12:21:00.000Z"
+    },
+    {
+      "id": "heb-02-bet",
+      "title": "Bet — ב",
+      "category": "Hebrew Alphabet",
+      "glyph": "ב",
+      "body": "Bet (ב) is the 2nd letter of the Hebrew alphabet. Transliteration: Bet (Vet). Sound: \"b\" (a soft \"v\" without the dagesh). Numeric value (gematria): 2. Pictograph: a house or tent: household, family, dwelling, and \"in/within\".",
+      "createdAt": "2026-06-13T12:20:00.000Z",
+      "updatedAt": "2026-06-13T12:20:00.000Z"
+    },
+    {
+      "id": "heb-03-gimel",
+      "title": "Gimel — ג",
+      "category": "Hebrew Alphabet",
+      "glyph": "ג",
+      "body": "Gimel (ג) is the 3rd letter of the Hebrew alphabet. Transliteration: Gimel. Sound: \"g\" as in \"go\". Numeric value (gematria): 3. Pictograph: a camel or foot: to lift up, to walk, movement, pride, and giving (gemilut).",
+      "createdAt": "2026-06-13T12:19:00.000Z",
+      "updatedAt": "2026-06-13T12:19:00.000Z"
+    },
+    {
+      "id": "heb-04-dalet",
+      "title": "Dalet — ד",
+      "category": "Hebrew Alphabet",
+      "glyph": "ד",
+      "body": "Dalet (ד) is the 4th letter of the Hebrew alphabet. Transliteration: Dalet. Sound: \"d\". Numeric value (gematria): 4. Pictograph: a door: a doorway, pathway, entrance, and humility (dal, the poor).",
+      "createdAt": "2026-06-13T12:18:00.000Z",
+      "updatedAt": "2026-06-13T12:18:00.000Z"
+    },
+    {
+      "id": "heb-05-he",
+      "title": "He — ה",
+      "category": "Hebrew Alphabet",
+      "glyph": "ה",
+      "body": "He (ה) is the 5th letter of the Hebrew alphabet. Transliteration: He (Hei). Sound: \"h\". Numeric value (gematria): 5. Pictograph: a window, or a person with arms raised: behold, to reveal, breath, expression.",
+      "createdAt": "2026-06-13T12:17:00.000Z",
+      "updatedAt": "2026-06-13T12:17:00.000Z"
+    },
+    {
+      "id": "heb-06-vav",
+      "title": "Vav — ו",
+      "category": "Hebrew Alphabet",
+      "glyph": "ו",
+      "body": "Vav (ו) is the 6th letter of the Hebrew alphabet. Transliteration: Vav (Waw). Sound: \"v\"; as a vowel, \"o\" or \"u\". Numeric value (gematria): 6. Pictograph: a nail, hook, or peg: to join, to connect, \"and,\" and security.",
+      "createdAt": "2026-06-13T12:16:00.000Z",
+      "updatedAt": "2026-06-13T12:16:00.000Z"
+    },
+    {
+      "id": "heb-07-zayin",
+      "title": "Zayin — ז",
+      "category": "Hebrew Alphabet",
+      "glyph": "ז",
+      "body": "Zayin (ז) is the 7th letter of the Hebrew alphabet. Transliteration: Zayin. Sound: \"z\". Numeric value (gematria): 7. Pictograph: a weapon or sword: to cut, to nourish, and a crowned implement.",
+      "createdAt": "2026-06-13T12:15:00.000Z",
+      "updatedAt": "2026-06-13T12:15:00.000Z"
+    },
+    {
+      "id": "heb-08-het",
+      "title": "Het — ח",
+      "category": "Hebrew Alphabet",
+      "glyph": "ח",
+      "body": "Het (ח) is the 8th letter of the Hebrew alphabet. Transliteration: Chet. Sound: a guttural \"ch\" (as in Bach). Numeric value (gematria): 8. Pictograph: a fence or wall: to separate, to protect, an inner chamber, and life (chai).",
+      "createdAt": "2026-06-13T12:14:00.000Z",
+      "updatedAt": "2026-06-13T12:14:00.000Z"
+    },
+    {
+      "id": "heb-09-tet",
+      "title": "Tet — ט",
+      "category": "Hebrew Alphabet",
+      "glyph": "ט",
+      "body": "Tet (ט) is the 9th letter of the Hebrew alphabet. Transliteration: Tet. Sound: an emphatic \"t\". Numeric value (gematria): 9. Pictograph: a basket or coiled snake: to surround, to contain, to twist, and good (tov).",
+      "createdAt": "2026-06-13T12:13:00.000Z",
+      "updatedAt": "2026-06-13T12:13:00.000Z"
+    },
+    {
+      "id": "heb-10-yod",
+      "title": "Yod — י",
+      "category": "Hebrew Alphabet",
+      "glyph": "י",
+      "body": "Yod (י) is the 10th letter of the Hebrew alphabet. Transliteration: Yod. Sound: \"y\". Numeric value (gematria): 10. Pictograph: an arm and closed hand: a deed, work, to make; the smallest letter — great things begin small.",
+      "createdAt": "2026-06-13T12:12:00.000Z",
+      "updatedAt": "2026-06-13T12:12:00.000Z"
+    },
+    {
+      "id": "heb-11-kaf",
+      "title": "Kaf — כ",
+      "category": "Hebrew Alphabet",
+      "glyph": "כ",
+      "body": "Kaf (כ) is the 11th letter of the Hebrew alphabet. Transliteration: Kaf (Khaf). Sound: \"k\" (a soft \"kh\" without the dagesh). Numeric value (gematria): 20. Pictograph: an open or cupped palm: to cover, to open, to bend, and to allow. Its final (sofit) form is ך.",
+      "createdAt": "2026-06-13T12:11:00.000Z",
+      "updatedAt": "2026-06-13T12:11:00.000Z"
+    },
+    {
+      "id": "heb-12-lamed",
+      "title": "Lamed — ל",
+      "category": "Hebrew Alphabet",
+      "glyph": "ל",
+      "body": "Lamed (ל) is the 12th letter of the Hebrew alphabet. Transliteration: Lamed. Sound: \"l\". Numeric value (gematria): 30. Pictograph: a shepherd's staff or goad: to teach, to learn, to guide; the tallest letter.",
+      "createdAt": "2026-06-13T12:10:00.000Z",
+      "updatedAt": "2026-06-13T12:10:00.000Z"
+    },
+    {
+      "id": "heb-13-mem",
+      "title": "Mem — מ",
+      "category": "Hebrew Alphabet",
+      "glyph": "מ",
+      "body": "Mem (מ) is the 13th letter of the Hebrew alphabet. Transliteration: Mem. Sound: \"m\". Numeric value (gematria): 40. Pictograph: water: chaos and depth, the mighty, the masses, and flowing wisdom. Its final (sofit) form is ם.",
+      "createdAt": "2026-06-13T12:09:00.000Z",
+      "updatedAt": "2026-06-13T12:09:00.000Z"
+    },
+    {
+      "id": "heb-14-nun",
+      "title": "Nun — נ",
+      "category": "Hebrew Alphabet",
+      "glyph": "נ",
+      "body": "Nun (נ) is the 14th letter of the Hebrew alphabet. Transliteration: Nun. Sound: \"n\". Numeric value (gematria): 50. Pictograph: a fish or sprouting seed: life, activity, continuity, an heir, and faithfulness. Its final (sofit) form is ן.",
+      "createdAt": "2026-06-13T12:08:00.000Z",
+      "updatedAt": "2026-06-13T12:08:00.000Z"
+    },
+    {
+      "id": "heb-15-samekh",
+      "title": "Samekh — ס",
+      "category": "Hebrew Alphabet",
+      "glyph": "ס",
+      "body": "Samekh (ס) is the 15th letter of the Hebrew alphabet. Transliteration: Samekh. Sound: \"s\". Numeric value (gematria): 60. Pictograph: a prop or support (a thorn/twist): to support, to uphold, to encircle and protect.",
+      "createdAt": "2026-06-13T12:07:00.000Z",
+      "updatedAt": "2026-06-13T12:07:00.000Z"
+    },
+    {
+      "id": "heb-16-ayin",
+      "title": "Ayin — ע",
+      "category": "Hebrew Alphabet",
+      "glyph": "ע",
+      "body": "Ayin (ע) is the 16th letter of the Hebrew alphabet. Transliteration: Ayin. Sound: a silent guttural ('a). Numeric value (gematria): 70. Pictograph: an eye: to see, to perceive, to know, insight and experience.",
+      "createdAt": "2026-06-13T12:06:00.000Z",
+      "updatedAt": "2026-06-13T12:06:00.000Z"
+    },
+    {
+      "id": "heb-17-pe",
+      "title": "Pe — פ",
+      "category": "Hebrew Alphabet",
+      "glyph": "פ",
+      "body": "Pe (פ) is the 17th letter of the Hebrew alphabet. Transliteration: Pe (Fe). Sound: \"p\" (a soft \"f\"/\"ph\" without the dagesh). Numeric value (gematria): 80. Pictograph: a mouth: to speak, a word, to open, an edge. Its final (sofit) form is ף.",
+      "createdAt": "2026-06-13T12:05:00.000Z",
+      "updatedAt": "2026-06-13T12:05:00.000Z"
+    },
+    {
+      "id": "heb-18-tsadi",
+      "title": "Tsadi — צ",
+      "category": "Hebrew Alphabet",
+      "glyph": "צ",
+      "body": "Tsadi (צ) is the 18th letter of the Hebrew alphabet. Transliteration: Tsadi. Sound: \"ts\" / \"tz\". Numeric value (gematria): 90. Pictograph: a fish-hook or a person bowing: to catch, to desire, need, and righteousness (tzaddik). Its final (sofit) form is ץ.",
+      "createdAt": "2026-06-13T12:04:00.000Z",
+      "updatedAt": "2026-06-13T12:04:00.000Z"
+    },
+    {
+      "id": "heb-19-qof",
+      "title": "Qof — ק",
+      "category": "Hebrew Alphabet",
+      "glyph": "ק",
+      "body": "Qof (ק) is the 19th letter of the Hebrew alphabet. Transliteration: Qof. Sound: a deep, uvular \"q\". Numeric value (gematria): 100. Pictograph: the back of the head, or the sun on the horizon: behind, the last/least, time and cycles, to encircle.",
+      "createdAt": "2026-06-13T12:03:00.000Z",
+      "updatedAt": "2026-06-13T12:03:00.000Z"
+    },
+    {
+      "id": "heb-20-resh",
+      "title": "Resh — ר",
+      "category": "Hebrew Alphabet",
+      "glyph": "ר",
+      "body": "Resh (ר) is the 20th letter of the Hebrew alphabet. Transliteration: Resh. Sound: \"r\". Numeric value (gematria): 200. Pictograph: the head of a person: first, top, beginning, chief.",
+      "createdAt": "2026-06-13T12:02:00.000Z",
+      "updatedAt": "2026-06-13T12:02:00.000Z"
+    },
+    {
+      "id": "heb-21-shin",
+      "title": "Shin — ש",
+      "category": "Hebrew Alphabet",
+      "glyph": "ש",
+      "body": "Shin (ש) is the 21st letter of the Hebrew alphabet. Transliteration: Shin (Sin). Sound: \"sh\" (or \"s\" as sin). Numeric value (gematria): 300. Pictograph: two or three front teeth: to consume, to press, sharpness; a symbol of Shaddai.",
+      "createdAt": "2026-06-13T12:01:00.000Z",
+      "updatedAt": "2026-06-13T12:01:00.000Z"
+    },
+    {
+      "id": "heb-22-tav",
+      "title": "Tav — ת",
+      "category": "Hebrew Alphabet",
+      "glyph": "ת",
+      "body": "Tav (ת) is the 22nd letter of the Hebrew alphabet. Transliteration: Tav. Sound: \"t\". Numeric value (gematria): 400. Pictograph: a mark, sign, or cross: a sign, a covenant, to seal, and completion — the end of the alphabet.",
+      "createdAt": "2026-06-13T12:00:00.000Z",
+      "updatedAt": "2026-06-13T12:00:00.000Z"
     }
   ]
 }

@@ -113,7 +113,8 @@ function renderPosts() {
 
   container.innerHTML = posts.map((p) => {
     const t = thumbStyle(p.category);
-    const initial = (p.category || '?').trim().charAt(0).toUpperCase();
+    // Prefer a per-post glyph (e.g. the Hebrew letter) for the monogram.
+    const initial = p.glyph || (p.category || '?').trim().charAt(0).toUpperCase();
     return `
       <article class="post-card">
         <div class="post-thumb" style="background:${t.bg}">
