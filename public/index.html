@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReidCodex — A codex of ideas worth keeping</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/logo.svg" alt="ReidCodex logo" />
+      <span class="brand-text">Reid<span>Codex</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle categories">☰</button>
+    <div class="nav-links">
+      <a href="/" class="active">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/login">Admin</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-inner">
+      <img class="hero-logo" src="/logo.svg" alt="ReidCodex" />
+      <p class="hero-eyebrow">News · Guides · Updates · Resources</p>
+      <h1 class="hero-title">A codex of ideas worth keeping.</h1>
+      <p class="hero-sub">
+        Field notes, guides, and updates from ReidCodex — collected, organized,
+        and easy to explore.
+      </p>
+      <hr class="hero-rule" />
+    </div>
+  </header>
+
+  <!-- Browse -->
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="search-box">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input type="search" id="searchInput" placeholder="Search posts…"
+               aria-label="Search posts" autocomplete="off" />
+      </div>
+      <h2 class="sidebar-heading">Browse by category</h2>
+      <ul class="category-list" id="categoryList"></ul>
+    </aside>
+
+    <main class="content">
+      <div class="content-header">
+        <h1 id="contentTitle">All posts</h1>
+        <p id="contentSubtitle">Browse everything published on ReidCodex.</p>
+      </div>
+      <div class="posts" id="posts"></div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p><span class="brand-text">Reid<span>Codex</span></span></p>
+    <p>A codex of news, guides, and ideas. &copy; 2026 ReidCodex.</p>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

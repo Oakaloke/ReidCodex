@@ -1,0 +1,6 @@
+node_modules/
+.env
+*.log
+
+# Local data store (uncomment if you don't want posts committed)
+# data/posts.json

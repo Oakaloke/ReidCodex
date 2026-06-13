@@ -1,0 +1,17 @@
+{
+  "name": "reidcodex",
+  "version": "1.0.0",
+  "description": "ReidCodex — a static-first content/article site with a small Express backend and admin dashboard.",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

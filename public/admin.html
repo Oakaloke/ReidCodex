@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — ReidCodex</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="/">
+      <img class="brand-logo" src="/logo.svg" alt="ReidCodex logo" />
+      <span class="brand-text">Reid<span>Codex</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/">View site</a>
+      <span id="whoami" style="color: var(--text-dim); font-size: 0.9rem;"></span>
+      <a href="#" id="logoutBtn">Log out</a>
+    </div>
+  </nav>
+
+  <div class="page" style="max-width: 1100px;">
+    <h1>Dashboard</h1>
+    <div class="notice" id="notice"></div>
+
+    <div class="admin-grid">
+      <!-- Editor -->
+      <section class="card">
+        <h3 id="editorTitle" style="margin-top:0;">New post</h3>
+        <form id="postForm">
+          <input type="hidden" id="postId" />
+          <div class="field">
+            <label for="title">Title</label>
+            <input type="text" id="title" required />
+          </div>
+          <div class="field">
+            <label for="category">Category</label>
+            <input type="text" id="category" list="categoryOptions" required
+                   placeholder="e.g. News, Guides, Updates…" />
+            <datalist id="categoryOptions"></datalist>
+          </div>
+          <div class="field">
+            <label for="body">Body</label>
+            <textarea id="body" required></textarea>
+          </div>
+          <div class="row">
+            <button type="submit" class="btn" id="saveBtn">Create post</button>
+            <button type="button" class="btn secondary" id="resetBtn" style="display:none;">Cancel edit</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Existing posts -->
+      <section>
+        <h3 style="margin-top:0;">Your posts</h3>
+        <div id="adminPosts"></div>
+      </section>
+    </div>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
