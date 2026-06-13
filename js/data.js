@@ -1,5 +1,5 @@
-// Auto-generated from data/posts.json — static snapshot for GitHub Pages.
-// Regenerate after content changes; this file is NOT served by the API.
+// Auto-generated from data/posts.json by scripts/build-static.js.
+// Do not edit by hand — run `npm run build:static` to regenerate.
 window.REIDCODEX_DATA = {
   "categories": [
     "News",

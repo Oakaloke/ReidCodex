@@ -127,8 +127,27 @@ Open <http://localhost:3000>.
 
 ## Deployment
 
-The repo's `CNAME` points **reidcodex.com** at GitHub Pages. Note that Pages is
-a **static** host and does not run the Node/Express server, so the `/api/*`
-routes (and the admin dashboard) only work when the Express server is running
-(locally, or on a Node host such as Render/Railway/Fly). See the notes from the
-team before changing the deploy target.
+### Static site — GitHub Pages (live at reidcodex.com)
+
+The public site is published as a **static build served from the repository
+root** via GitHub Pages (Settings → Pages → Branch `main`, folder `/ (root)`).
+The root `CNAME` points **reidcodex.com** at it, and `.nojekyll` disables Jekyll
+so files are served as-is.
+
+The static pages (`index.html`, `about.html`, `contact.html` + `css/`, `js/`,
+`logo.svg`) read posts from `js/data.js`, a snapshot baked from
+`data/posts.json`. After changing content, regenerate it and commit:
+
+```bash
+npm run build:static   # regenerates js/data.js from data/posts.json
+```
+
+> GitHub Pages is a **static** host — it does not run the Express server, so the
+> static site has no login/admin and no live `/api`. New posts appear only after
+> you rebuild `js/data.js` and push.
+
+### Full app — Node host (optional)
+
+To run the full app (admin dashboard + `/api`), deploy the Express server to a
+Node host (see `render.yaml` for a Render Blueprint with a persistent disk) and
+set `ADMIN_USER`, `ADMIN_PASS`, `SESSION_SECRET`, `NODE_ENV` there.
