@@ -582,12 +582,17 @@ body { background: transparent; }
 .rain--left  { left: 0; }
 .rain--right { right: 0; }
 
+/* Two copies stacked on top of each other; JS crossfades them so the
+   loop seam never shows (see the inline script in index.html). */
 .rain-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
+.rain-video--fade { will-change: opacity; }
 /* Mirror the right column so the two sides frame symmetrically */
 .rain--right .rain-video { transform: scaleX(-1); }
 

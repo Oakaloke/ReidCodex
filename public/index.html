@@ -13,12 +13,18 @@
 <body>
   <!-- Matrix digital-rain columns framing the page (left + right edges) -->
   <div class="rain rain--left" aria-hidden="true">
-    <video class="rain-video" autoplay loop muted playsinline preload="metadata">
+    <video class="rain-video rain-video--base" autoplay loop muted playsinline preload="auto">
+      <source src="/video/matrix-blue.mp4" type="video/mp4" />
+    </video>
+    <video class="rain-video rain-video--fade" autoplay loop muted playsinline preload="auto">
       <source src="/video/matrix-blue.mp4" type="video/mp4" />
     </video>
   </div>
   <div class="rain rain--right" aria-hidden="true">
-    <video class="rain-video" autoplay loop muted playsinline preload="metadata">
+    <video class="rain-video rain-video--base" autoplay loop muted playsinline preload="auto">
+      <source src="/video/matrix-blue.mp4" type="video/mp4" />
+    </video>
+    <video class="rain-video rain-video--fade" autoplay loop muted playsinline preload="auto">
       <source src="/video/matrix-blue.mp4" type="video/mp4" />
     </video>
   </div>
@@ -80,5 +86,48 @@
   </div><!-- /.page-frame -->
 
   <script src="/js/main.js"></script>
+
+  <!-- Seamless rain: crossfade two offset copies so the loop seam never shows -->
+  <script>
+  (function () {
+    if (window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var FADE = 0.9; // seconds of crossfade around each loop seam
+    document.querySelectorAll('.rain').forEach(function (col) {
+      var base = col.querySelector('.rain-video--base');
+      var top = col.querySelector('.rain-video--fade');
+      if (!base || !top) return;
+      function begin() {
+        var dur = top.duration;
+        if (!dur || !isFinite(dur) || dur < 2 * FADE) return;
+        try { base.currentTime = dur / 2; } catch (e) {}
+        base.play(); top.play();
+        var synced = false;
+        (function tick() {
+          var d = top.duration;
+          if (d && isFinite(d)) {
+            var t = top.currentTime;
+            var edge = Math.min(t, d - t);     // distance to nearest seam
+            top.style.opacity = edge < FADE ? (edge / FADE) : 1;
+            // Keep the half-cycle offset honest, but only re-seek the base
+            // copy while it's hidden (top fully opaque near its midpoint).
+            if (t > d / 2) {
+              if (!synced) {
+                var desired = (t + d / 2) % d;
+                var diff = Math.abs(base.currentTime - desired);
+                diff = Math.min(diff, d - diff);
+                if (diff > 0.12) { try { base.currentTime = desired; } catch (e) {} }
+                synced = true;
+              }
+            } else { synced = false; }
+          }
+          requestAnimationFrame(tick);
+        })();
+      }
+      if (top.readyState >= 1) begin();
+      else top.addEventListener('loadedmetadata', begin, { once: true });
+    });
+  })();
+  </script>
 </body>
 </html>
