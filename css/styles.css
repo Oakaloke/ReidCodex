@@ -551,3 +551,85 @@ textarea { min-height: 180px; resize: vertical; line-height: 1.6; }
   .nav-links a { padding: 0.5rem 0.35rem; font-size: 0.7rem; }
   .brand-text { font-size: 1.15rem; }
 }
+
+/* ============================================================
+   Matrix digital-rain frame
+   Dark page backdrop with blue "rain" video pinned to both
+   edges; all content lives in a centered paper frame.
+   ============================================================ */
+:root {
+  --void: #05080f;                       /* dark backdrop behind the frame */
+}
+
+/* Dark backdrop so the rain reads cohesively in the side gutters */
+html { background: var(--void); }
+body { background: transparent; }
+
+/* --- The rain columns ---
+   Each column spans half the viewport and is pinned to its edge. The
+   opaque centered .page-frame masks the inner halves, so the rain fills
+   the ENTIRE side gutter — screen edge to content — with no black band. */
+.rain {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 50vw;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--void);
+  pointer-events: none;
+}
+.rain--left  { left: 0; }
+.rain--right { right: 0; }
+
+.rain-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Mirror the right column so the two sides frame symmetrically */
+.rain--right .rain-video { transform: scaleX(-1); }
+
+/* Dark tint + top/bottom vignette so the rain isn't too bright
+   and doesn't hard-cut at the viewport edges */
+.rain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 8, 15, 0.65),
+    rgba(5, 8, 15, 0.12) 22%,
+    rgba(5, 8, 15, 0.12) 78%,
+    rgba(5, 8, 15, 0.65)
+  );
+  pointer-events: none;
+}
+/* --- The centered content frame --- */
+.page-frame {
+  position: relative;
+  z-index: 1;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  min-height: 100vh;
+  background: var(--paper);
+  box-shadow: 0 0 70px rgba(0, 0, 0, 0.55);
+}
+
+/* On tablet/phone: drop the rain entirely for readability + performance */
+@media (max-width: 900px) {
+  html { background: var(--paper); }
+  body { padding-inline: 0; }
+  .rain { display: none; }
+  .page-frame { max-width: 100%; box-shadow: none; min-height: 0; }
+}
+
+/* Respect reduced-motion: swap the video for a static blue gradient */
+@media (prefers-reduced-motion: reduce) {
+  .rain-video { display: none; }
+  .rain {
+    background:
+      linear-gradient(180deg, #0a1c33 0%, #071726 45%, var(--void) 100%);
+  }
+}

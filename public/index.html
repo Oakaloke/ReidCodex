@@ -11,6 +11,19 @@
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
+  <!-- Matrix digital-rain columns framing the page (left + right edges) -->
+  <div class="rain rain--left" aria-hidden="true">
+    <video class="rain-video" autoplay loop muted playsinline preload="metadata">
+      <source src="/video/matrix-blue.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="rain rain--right" aria-hidden="true">
+    <video class="rain-video" autoplay loop muted playsinline preload="metadata">
+      <source src="/video/matrix-blue.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="page-frame">
   <nav class="navbar">
     <a class="brand" href="/">
       <img class="brand-logo" src="/logo.svg" alt="ReidCodex logo" />
@@ -64,6 +77,7 @@
     <p><span class="brand-text">Reid<span>Codex</span></span></p>
     <p>A codex of news, guides, and ideas. &copy; 2026 ReidCodex.</p>
   </footer>
+  </div><!-- /.page-frame -->
 
   <script src="/js/main.js"></script>
 </body>
