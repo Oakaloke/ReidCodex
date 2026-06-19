@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Builder's Path — No-Code & Low-Code for the Road · ReidCodex</title>
+<meta name="description" content="A driving-friendly audio adventure that teaches you to build websites with no-code and low-code tools. Read each mission aloud to your AI and learn by doing.">
+<style>
+  :root{
+    --ink:#0a0f1f;
+    --panel:#0e1428;
+    --panel-2:#121a33;
+    --line:#1f2c52;
+    --matrix:#2fe0ff;
+    --matrix-deep:#0a8fb8;
+    --signal:#ffb454;
+    --text:#dfe7ff;
+    --muted:#8a99c4;
+    --white:#f4f7ff;
+    --code-bg:#070b18;
+    --maxw:820px;
+    --display:"Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --body:"Newsreader", Georgia, "Times New Roman", serif;
+    --mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 600px at 75% -10%, rgba(47,224,255,.10), transparent 60%),
+      radial-gradient(900px 500px at 0% 20%, rgba(255,180,84,.06), transparent 55%),
+      var(--ink);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:18px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--matrix);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ---- Matrix rain backdrop ---- */
+  #rain{
+    position:fixed; inset:0; z-index:0; opacity:.16; pointer-events:none;
+  }
+  .wrap{position:relative; z-index:1}
+
+  /* ---- Top bar ---- */
+  header.bar{
+    position:sticky; top:0; z-index:20;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem; padding:.85rem clamp(1rem,4vw,2rem);
+    background:rgba(8,11,24,.78);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{
+    font-family:var(--mono); font-weight:600; letter-spacing:.04em;
+    color:var(--white); font-size:.95rem;
+  }
+  .brand b{color:var(--matrix)}
+  .bar nav{display:flex; gap:1.25rem; font-family:var(--mono); font-size:.78rem; text-transform:uppercase; letter-spacing:.08em}
+  .bar nav a{color:var(--muted)}
+  .bar nav a:hover{color:var(--matrix); text-decoration:none}
+  @media (max-width:640px){ .bar nav{display:none} }
+
+  /* ---- Hero ---- */
+  .hero{
+    max-width:var(--maxw); margin:0 auto; padding:clamp(3.5rem,9vw,7rem) clamp(1.25rem,4vw,2rem) 2.5rem;
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:.74rem; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--matrix); display:flex; align-items:center; gap:.6rem; margin-bottom:1.4rem;
+  }
+  .eyebrow::before{content:""; width:34px; height:1px; background:var(--matrix); display:inline-block}
+  .hero h1{
+    font-family:var(--display); font-weight:600;
+    font-size:clamp(2.4rem,7vw,4.4rem); line-height:1.02; letter-spacing:-.02em;
+    color:var(--white); margin-bottom:1.3rem;
+  }
+  .hero h1 .glow{color:var(--matrix); text-shadow:0 0 26px rgba(47,224,255,.45)}
+  .hero .lede{font-size:clamp(1.1rem,2.6vw,1.4rem); color:var(--text); max-width:46ch; margin-bottom:1.6rem}
+  .hero .sub{color:var(--muted); font-size:1.02rem; max-width:54ch}
+
+  .road-note{
+    margin-top:2.2rem; display:flex; gap:.9rem; align-items:flex-start;
+    border:1px solid var(--line); border-left:3px solid var(--signal);
+    background:linear-gradient(180deg, rgba(255,180,84,.05), transparent);
+    border-radius:10px; padding:1rem 1.15rem;
+  }
+  .road-note .ic{font-family:var(--mono); color:var(--signal); font-weight:600; font-size:.8rem; letter-spacing:.1em; white-space:nowrap; padding-top:.15rem}
+  .road-note p{font-size:.98rem; color:var(--text)}
+
+  /* ---- Section frame ---- */
+  section.block{max-width:var(--maxw); margin:0 auto; padding:2.5rem clamp(1.25rem,4vw,2rem)}
+  .kicker{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:.8rem;
+  }
+  h2.section-title{
+    font-family:var(--display); font-weight:600; color:var(--white);
+    font-size:clamp(1.7rem,4.5vw,2.6rem); line-height:1.08; letter-spacing:-.015em; margin-bottom:1rem;
+  }
+  section.block p{margin-bottom:1.1rem}
+  section.block p.big{font-size:1.12rem}
+
+  /* ---- Concept cards (the "map") ---- */
+  .map{display:grid; gap:1rem; margin:1.5rem 0}
+  @media(min-width:640px){ .map{grid-template-columns:1fr 1fr} }
+  .tile{
+    border:1px solid var(--line); border-radius:14px; padding:1.2rem 1.25rem;
+    background:linear-gradient(180deg, var(--panel), var(--ink));
+  }
+  .tile h3{font-family:var(--display); font-size:1.12rem; color:var(--white); margin-bottom:.4rem}
+  .tile p{font-size:.96rem; color:var(--muted); margin:0}
+  .tile .tag{font-family:var(--mono); font-size:.7rem; color:var(--matrix); letter-spacing:.08em; text-transform:uppercase; display:block; margin-bottom:.5rem}
+
+  /* ---- Missions ---- */
+  .mission{
+    border:1px solid var(--line); border-radius:18px; overflow:hidden; margin:2rem 0;
+    background:linear-gradient(180deg, var(--panel-2), var(--panel));
+  }
+  .mission > .head{
+    display:flex; align-items:baseline; gap:1rem; padding:1.25rem 1.4rem .9rem;
+    border-bottom:1px solid var(--line);
+  }
+  .mission .num{
+    font-family:var(--mono); font-weight:600; font-size:1.05rem; color:var(--ink);
+    background:var(--matrix); border-radius:8px; padding:.25rem .6rem; line-height:1; white-space:nowrap;
+    box-shadow:0 0 22px rgba(47,224,255,.35);
+  }
+  .mission .head h3{font-family:var(--display); font-weight:600; font-size:1.3rem; color:var(--white)}
+  .mission .body{padding:1.1rem 1.4rem 1.4rem}
+  .mission .body p{font-size:1rem}
+  .mission .goal{font-family:var(--mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:var(--signal); margin-bottom:.7rem}
+
+  /* ---- Spoken prompt block ---- */
+  .say{
+    margin:1.1rem 0; border:1px solid var(--matrix-deep); border-radius:12px;
+    background:var(--code-bg); overflow:hidden;
+  }
+  .say .label{
+    display:flex; align-items:center; gap:.5rem;
+    font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--matrix); padding:.55rem .9rem; border-bottom:1px solid rgba(47,224,255,.2);
+    background:rgba(47,224,255,.05);
+  }
+  .say .label::before{content:"▶"; font-size:.6rem}
+  .say blockquote{
+    font-family:var(--body); font-style:italic; font-size:1.06rem; color:var(--white);
+    padding:1rem 1.1rem; line-height:1.6;
+  }
+
+  /* ---- Inline code ---- */
+  code{font-family:var(--mono); font-size:.86em; background:rgba(47,224,255,.09); color:var(--matrix); padding:.08em .4em; border-radius:5px}
+
+  /* ---- Checklist ---- */
+  ul.steps{list-style:none; margin:1rem 0; display:grid; gap:.6rem}
+  ul.steps li{position:relative; padding-left:1.7rem; font-size:1rem; color:var(--text)}
+  ul.steps li::before{content:"›"; position:absolute; left:.3rem; top:-.05rem; color:var(--matrix); font-family:var(--mono); font-weight:700}
+
+  /* ---- Glossary ---- */
+  dl.gloss{margin:1rem 0; display:grid; gap:1rem}
+  dl.gloss div{border-left:2px solid var(--line); padding-left:1rem}
+  dl.gloss dt{font-family:var(--display); font-weight:600; color:var(--white); font-size:1.05rem}
+  dl.gloss dd{color:var(--muted); font-size:.97rem; margin-top:.2rem}
+
+  /* ---- Divider ---- */
+  .rule{max-width:var(--maxw); margin:1rem auto; padding:0 clamp(1.25rem,4vw,2rem)}
+  .rule hr{border:none; border-top:1px solid var(--line)}
+
+  /* ---- Footer ---- */
+  footer{max-width:var(--maxw); margin:0 auto; padding:3rem clamp(1.25rem,4vw,2rem) 4rem; color:var(--muted); font-size:.92rem}
+  footer .mono{font-family:var(--mono); font-size:.74rem; letter-spacing:.06em; color:var(--muted)}
+
+  @media (prefers-reduced-motion: reduce){
+    #rain{display:none}
+    html{scroll-behavior:auto}
+  }
+  :focus-visible{outline:2px solid var(--matrix); outline-offset:3px; border-radius:4px}
+</style>
+</head>
+<body>
+<canvas id="rain" aria-hidden="true"></canvas>
+
+<div class="wrap">
+  <header class="bar">
+    <span class="brand">Reid<b>Codex</b> / learn</span>
+    <nav aria-label="sections">
+      <a href="#start">Start</a>
+      <a href="#map">The Map</a>
+      <a href="#missions">Missions</a>
+      <a href="#gloss">Glossary</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero" id="start">
+    <div class="eyebrow">The Builder's Path · An Audio Adventure</div>
+    <h1>Learn to build the web <span class="glow">while you drive.</span></h1>
+    <p class="lede">A guided journey through no-code and low-code website building — written to be heard, not just read.</p>
+    <p class="sub">Each mission below comes with a prompt you can speak aloud to your AI. No keyboard, no screen, no pressure. By the last mile you'll understand how real websites get made, and you'll have the words to make your AI build them with you.</p>
+
+    <div class="road-note">
+      <span class="ic">ON THE ROAD</span>
+      <p>Eyes up, hands on the wheel. When you reach a <strong>Say this aloud</strong> block, read it to your AI and let it teach back. Pull over before tapping anything. The goal is fluency, so you arrive home knowing exactly what to build.</p>
+    </div>
+  </div>
+
+  <div class="rule"><hr></div>
+
+  <!-- THE MAP -->
+  <section class="block" id="map">
+    <div class="kicker">Orientation · Where we're going</div>
+    <h2 class="section-title">First, the lay of the land</h2>
+    <p class="big">Before the missions, here's the whole world in five ideas. If a term shows up later, it lives here. Don't memorize it; just let it pass by like road signs.</p>
+
+    <div class="map">
+      <div class="tile">
+        <span class="tag">The Spectrum</span>
+        <h3>No-code → Low-code → Code</h3>
+        <p>No-code is building by clicking and dragging. Low-code is mostly that, plus small snippets when you want power. Code is writing every line. You can live happily anywhere on this line.</p>
+      </div>
+      <div class="tile">
+        <span class="tag">The Anatomy</span>
+        <h3>A site is three things</h3>
+        <p>Structure (the bones), style (the skin), and content (the words and images). Every tool, no-code or not, is just a friendlier way to arrange those three.</p>
+      </div>
+      <div class="tile">
+        <span class="tag">The Engine</span>
+        <h3>Static vs. dynamic</h3>
+        <p>A static site is the same for everyone, fast and cheap — like your GitHub Pages sites. A dynamic site changes per visitor and needs a database behind it.</p>
+      </div>
+      <div class="tile">
+        <span class="tag">The Address</span>
+        <h3>Domain, host, deploy</h3>
+        <p>The domain is your street address. The host is the land it sits on. Deploying is moving the house onto the land so the world can visit.</p>
+      </div>
+      <div class="tile">
+        <span class="tag">The Helper</span>
+        <h3>The AI is your contractor</h3>
+        <p>You don't lay every brick. You describe the house clearly, the AI builds it, and you learn the trade by watching and asking why.</p>
+      </div>
+      <div class="tile">
+        <span class="tag">The Goal</span>
+        <h3>Taste, not just tools</h3>
+        <p>Anyone can drag a button. The skill worth having is knowing which button, where, and why. That's what these missions actually train.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"><hr></div>
+
+  <!-- MISSIONS -->
+  <section class="block" id="missions">
+    <div class="kicker">The Journey · Eight missions</div>
+    <h2 class="section-title">The missions</h2>
+    <p class="big">Take one per drive, or string a few together on a long haul. Each has a goal, a short teaching, and a prompt to speak aloud so your AI explains it back in its own words. Talking it through out loud is the whole point — that's how it sticks.</p>
+
+    <!-- 1 -->
+    <article class="mission">
+      <div class="head"><span class="num">01</span><h3>Name the spectrum</h3></div>
+      <div class="body">
+        <p class="goal">Goal · Understand where no-code, low-code, and code differ</p>
+        <p>People argue about which is "real" building. They're all real. No-code tools like Webflow, Framer, Wix, Squarespace, and Carrd let you design visually and never see a line of code. Low-code adds escape hatches — a snippet here, a custom block there. Hand-coding is what you already do with your GitHub Pages sites. The right choice is the one that gets your idea live without fighting you.</p>
+        <div class="say">
+          <div class="label">Say this aloud</div>
+          <blockquote>Explain the difference between no-code, low-code, and writing code by hand, like you're talking to a smart friend on a road trip. Give me one real example tool for each, and tell me one situation where each one is clearly the best choice.</blockquote>
+        </div>
+        <ul class="steps">
+          <li>Listen for the tradeoff: speed and ease versus control and ceiling.</li>
+          <li>Notice that "no-code" still produces real HTML and CSS underneath.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="mission">
+      <div class="head"><span class="num">02</span><h3>See the three layers</h3></div>
+      <div class="body">
+        <p class="goal">Goal · Learn structure, style, and behavior</p>
+        <p>Every web page is HTML (structure), CSS (style), and JavaScript (behavior). No-code tools hide these behind panels, but they're always there. Once you can name which layer a problem lives in, you can fix anything: "the spacing is wrong" is CSS, "the menu won't open" is JavaScript, "the heading is in the wrong place" is HTML.</p>
+        <div class="say">
+          <div class="label">Say this aloud</div>
+          <blockquote>Teach me HTML, CSS, and JavaScript using a house as a metaphor. Walk me through what each one does, then quiz me: describe three website problems and ask me which layer each one belongs to.</blockquote>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="mission">
+      <div class="head"><span class="num">03</span><h3>Pick the right no-code tool</h3></div>
+      <div class="body">
+        <p class="goal">Goal · Match the tool to the job</p>
+        <p>Carrd is unbeatable for a one-page site. Framer and Webflow give you serious design freedom with real animation. Squarespace and Wix trade some control for an all-in-one experience with hosting baked in. Notion and Super.so can turn notes into a site. The trap is picking by popularity instead of by fit — a landing page and a 200-page store want very different tools.</p>
+        <div class="say">
+          <div class="label">Say this aloud</div>
+          <blockquote>I want to compare no-code website builders. For Carrd, Framer, Webflow, Squarespace, and Wix, tell me the kind of project each one is best at and its biggest weakness. Then ask me what I'm trying to build so you can recommend one.</blockquote>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="mission">
+      <div class="head"><span class="num">04</span><h3>Design with taste</h3></div>
+      <div class="body">
+        <p class="goal">Goal · Make choices that don't look templated</p>
+        <p>Drag-and-drop makes everything <em>possible</em> and most things <em>mediocre</em>. The fix is a tiny set of rules: one display font and one body font, a palette of four or five colors with one accent, generous whitespace, and consistent spacing. Constraints are what make a page feel designed instead of assembled.</p>
+        <div class="say">
+          <div class="label">Say this aloud</div>
+          <blockquote>Teach me the five design decisions that make a website look professional instead of templated. Keep it to fonts, color, spacing, hierarchy, and one signature element. For each, give me a simple rule I can remember without looking at a screen.</blockquote>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="mission">
+      <div class="head"><span class="num">05</span><h3>Learn to prompt like a builder</h3></div>
+      <div class="body">
+        <p class="goal">Goal · Get exactly the site you pictured</p>
+        <p>The difference between a vague request and a great build is specificity. Name the audience, the one job the page must do, the mood, the sections in order, and the single thing it should be remembered for. A weak prompt is "make me a website." A strong one reads like a creative brief. The clearer your words, the less you fix later.</p>
+        <div class="say">
+          <div class="label">Say this aloud</div>
+          <blockquote>Help me write a strong website prompt out loud. Ask me one question at a time: who is it for, what is the one job of the page, what mood, what sections in order, and what should it be remembered for. After my answers, read the finished brief back to me.</blockquote>
+        </div>
+        <ul class="steps">
+          <li>This is the master skill — a clear brief beats any tool.</li>
+          <li>Save the brief in your head; you'll hand it to your AI when you're home.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- 6 -->
+    <article class="mission">
+      <div class="head"><span class="num">06</span><h3>Understand hosting and domains</h3></div>
+      <div class="body">
+        <p class="goal">Goal · Get a site from your machine to the world</p>
+        <p>A domain is rented from a registrar like Namecheap or Cloudflare. Hosting is where the files live — GitHub Pages and Netlify host static sites for free. Connecting them means pointing DNS records (the internet's phone book) from your domain to your host. You've done this with your Reid sites; this mission makes the <em>why</em> click so it stops feeling like luck.</p>
+        <div class="say">
+          <div class="label">Say this aloud</div>
+          <blockquote>Explain domains, hosting, and DNS to me like I'm setting up my first website. Define an A record and a CNAME in plain English, and walk me through what happens, step by step, from buying a domain to seeing my site live.</blockquote>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7 -->
+    <article class="mission">
+      <div class="head"><span class="num">07</span><h3>Add low-code superpowers</h3></div>
+      <div class="body">
+        <p class="goal">Goal · Break past what no-code allows</p>
+        <p>When a builder can't do the thing you want, low-code is the escape hatch: an embed block for a custom widget, a snippet of JavaScript for an interaction, a connection to a tool like Airtable or a form service. You don't become a programmer — you learn just enough to reach past the ceiling. This is also where AI shines: ask it for the exact snippet and where to paste it.</p>
+        <div class="say">
+          <div class="label">Say this aloud</div>
+          <blockquote>Give me three examples where a no-code site needs a small piece of custom code to do something the builder can't. For each, explain what the code does in plain words, and tell me where it usually gets pasted.</blockquote>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8 -->
+    <article class="mission">
+      <div class="head"><span class="num">08</span><h3>Ship, then improve</h3></div>
+      <div class="body">
+        <p class="goal">Goal · Build the habit that makes you good</p>
+        <p>The builders who get great aren't the ones who plan forever — they're the ones who ship a rough version, look at it honestly, and fix one thing at a time. Launch a small site. Read it on your phone. Note what feels off. Improve one thing. Repeat. Speed of iteration beats perfection of plan every single time.</p>
+        <div class="say">
+          <div class="label">Say this aloud</div>
+          <blockquote>Give me a five-step loop for shipping a website fast and improving it over time. Then ask me what small site I could launch this week, and help me cut it down to the smallest version worth publishing.</blockquote>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <div class="rule"><hr></div>
+
+  <!-- GLOSSARY -->
+  <section class="block" id="gloss">
+    <div class="kicker">Reference · For when a word slips by</div>
+    <h2 class="section-title">The road signs, defined</h2>
+    <p>You don't need these to start. They're here for the moment a term flies past and you want it pinned down. Have your AI read any of these aloud if you'd rather hear it.</p>
+    <dl class="gloss">
+      <div><dt>No-code</dt><dd>Building software visually, without writing code — clicking, dragging, and configuring instead.</dd></div>
+      <div><dt>Low-code</dt><dd>Mostly visual building, with small bits of real code added where you need more power.</dd></div>
+      <div><dt>Static site</dt><dd>A site that serves the same files to everyone. Fast, cheap, secure. Your GitHub Pages sites are static.</dd></div>
+      <div><dt>Dynamic site</dt><dd>A site that changes per visitor or updates from a database — logins, dashboards, stores.</dd></div>
+      <div><dt>Domain</dt><dd>Your readable web address, like reidcodex.com, rented from a registrar.</dd></div>
+      <div><dt>Host</dt><dd>The service that stores your site's files and serves them to visitors.</dd></div>
+      <div><dt>DNS</dt><dd>The internet's phone book; it points your domain at your host using records like A and CNAME.</dd></div>
+      <div><dt>Deploy</dt><dd>Publishing your site so it's live on the internet.</dd></div>
+      <div><dt>Responsive</dt><dd>A design that reshapes itself to look right on phones, tablets, and desktops.</dd></div>
+      <div><dt>Template</dt><dd>A pre-built starting design. A shortcut — and, unchanged, the reason many sites look the same.</dd></div>
+    </dl>
+  </section>
+
+  <div class="rule"><hr></div>
+
+  <footer>
+    <p style="font-size:1.05rem;color:var(--text);margin-bottom:1rem;">When you get home, hand your AI the brief from Mission 05 and let it build. You'll understand every choice it makes — because you learned the road on the way here.</p>
+    <p class="mono">REIDCODEX · THE BUILDER'S PATH · BUILT FOR THE DRIVE</p>
+  </footer>
+</div>
+
+<script>
+// Matrix-blue rain — calm, ambient, respects reduced motion
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c = document.getElementById('rain'), x = c.getContext('2d');
+  let cols, drops, fs = 16;
+  const glyphs = 'アイウエオカキクケコ01<>{}/=+*ABCDEF'.split('');
+  function size(){
+    c.width = innerWidth; c.height = innerHeight;
+    cols = Math.floor(c.width / fs);
+    drops = Array(cols).fill(0).map(()=>Math.random()*-50);
+  }
+  function tick(){
+    x.fillStyle = 'rgba(10,15,31,.10)';
+    x.fillRect(0,0,c.width,c.height);
+    x.font = fs + 'px monospace';
+    for (let i=0;i<cols;i++){
+      const g = glyphs[Math.floor(Math.random()*glyphs.length)];
+      const gx = i*fs, gy = drops[i]*fs;
+      x.fillStyle = Math.random()>0.975 ? '#bff4ff' : '#2fe0ff';
+      x.fillText(g, gx, gy);
+      if (gy > c.height && Math.random()>0.975) drops[i]=0;
+      drops[i] += 0.5;
+    }
+    requestAnimationFrame(tick);
+  }
+  addEventListener('resize', size);
+  size(); tick();
+})();
+</script>
+</body>
+</html>
